@@ -1,0 +1,21 @@
+@import "../../styles/base.scss";
+
+.container {
+  border: 1px solid $pink;
+  padding: 14px 22px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: $pink;
+  border-radius: 4px;
+  transition: 0.4s;
+
+  &:hover{
+    background-color: $pink;
+    color:#fff;
+    transition: 0.4s;
+  }
+}
