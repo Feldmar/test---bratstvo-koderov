@@ -12,6 +12,7 @@
   color: $pink;
   border-radius: 4px;
   transition: 0.4s;
+  z-index: 0;
 
   &:hover{
     background-color: $pink;
