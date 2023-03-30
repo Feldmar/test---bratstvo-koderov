@@ -1,22 +1,24 @@
 import { useState } from 'react';
-import styles from './Button.module.scss';
+import styles from './Page.module.scss';
 import Modal from '../Modal/Modal';
 
-function Button() {
+function Page() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleCloseModal = () => {
-    setIsOpen(false);
+  const handleCloseModal = (event: { target: any; currentTarget: any; }) => {
+    if (event.target === event.currentTarget) {
+      setIsOpen(false);
+    }
   };
 
   return (
     <>
       <button className={styles.container} onClick={toggleModal}>
-        Write
+        Написать
       </button>
       <>
         {isOpen && (
@@ -28,4 +30,4 @@ function Button() {
     </>
   )
 }
-export default Button;
+export default Page;

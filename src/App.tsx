@@ -1,11 +1,12 @@
 import './App.scss';
 import 'sass-reset';
-import Button from './components/Button/Button';
+import Page from './components/Button/Page';
 
 function App() {
+  
   return (
     <div className="app">
-      <Button/>
+      <Page/>
     </div>
   );
 }

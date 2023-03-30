@@ -14,14 +14,15 @@
   transition: 0.4s;
   z-index: 0;
 
-  &:hover{
+  &:hover {
     background-color: $pink;
-    color:#fff;
+    color: #fff;
     transition: 0.4s;
   }
 }
-.overlay{
-    display: flex;
+
+.overlay {
+  display: flex;
   z-index: 2;
   position: absolute;
   top: 0;
