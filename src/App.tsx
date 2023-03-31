@@ -1,6 +1,6 @@
 import './App.scss';
 import 'sass-reset';
-import Page from './components/Button/Page';
+import Page from './components/Page/Page';
 
 function App() {
   

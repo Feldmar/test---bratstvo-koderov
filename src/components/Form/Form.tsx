@@ -1,15 +1,75 @@
+import { useState } from 'react';
 import styles from './Form.module.scss'
 
 function Form() {
   const options = ['Экология', 'Разработка', 'Медицина', 'Политика'];
+
+  const [orgName, setOrgName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [logotype, setLogotype] = useState(null);
+  const [direction, setDirection] = useState('');
+  const [homepage, setHomepage] = useState('');
+  const [vk, setVk] = useState('');
+  const [ok, setOk] = useState('');
+  const [facebook, setFacebook] = useState('');
+  const [instagram, setInstagram] = useState('');
+  const [youtube, setYoutube] = useState('');
+  const [leader, setLeader] = useState('');
+
+  const handleSubmit = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+  }
+
+  function validateEmail(emailValue: string) {
+    setEmail(emailValue);
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+    if (!emailValid) {
+      console.log('Please enter a valid email address');
+      return;
+    }
+  }
+
+  function validateOrganization(orgValue: string) {
+    setOrgName(orgValue);
+    const orgValid = /^[a-zA-Zа-яА-Я0-9._-]+$/g.test(orgValue);
+    if (!orgValid) {
+      console.log('Please enter a valid org name');
+      return;
+    }
+
+  }
+
+
+
+
+
+  const handleReset = () => {
+    setOrgName('');
+    setPhone('');
+    setEmail('');
+    setLogotype(null);
+    setDirection('');
+    setHomepage('');
+    setVk('');
+    setOk('');
+    setFacebook('');
+    setInstagram('');
+    setYoutube('');
+    setLeader('');
+  };
+
+
+
+
 
   return (
     <form action="" className={styles.container}>
       <div className={styles.grid}>
         <div className={styles.items}>
           <div className={styles.item__small}>
-            <label htmlFor="" className={styles.label__requred}>Название организации</label>
-            <input type="text" className={styles.input} />
+            <label htmlFor="" className={styles.label__requred} >Название организации</label>
+            <input type="text" className={styles.input} value={orgName} onChange={(e) => validateOrganization(e.target.value)} required />
           </div>
           <div className={styles.item__small}>
             <label htmlFor="" className={styles.label__requred}>Телефон</label>
@@ -17,7 +77,12 @@ function Form() {
           </div>
           <div className={styles.item__small}>
             <label htmlFor="" className={styles.label__requred}>E-mail</label>
-            <input type="email" className={styles.input} />
+            <input type="email"
+              id="email"
+              className={styles.input}
+              value={email}
+              onChange={(e) => validateEmail(e.target.value)}
+              required />
           </div>
         </div>
         <div className={styles.logotype}>
@@ -66,8 +131,8 @@ function Form() {
         </div>
       </div>
       <div className={styles.buttons}>
-        <button type="submit" className={styles.submit}>Стать партнером проекта</button>
-        <button type='reset' className={styles.reset}>Отменить</button>
+        <button type="submit" className={styles.submit} onClick={handleSubmit}>Стать партнером проекта</button>
+        <button type='reset' className={styles.reset} onClick={handleReset}>Отменить</button>
       </div>
     </form>
   )
