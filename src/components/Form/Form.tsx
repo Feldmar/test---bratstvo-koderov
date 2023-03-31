@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import styles from './Form.module.scss'
 
 function Form() {
@@ -20,27 +20,14 @@ function Form() {
 
   const handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    if (submit) {
-    } else {
-
-    }
   }
-
-  useEffect(() => {
-    if (orgName && phone && email && leader) {
-      setSubmit(true)
-      return;
-    }
-  }, [orgName, phone, email, leader])
-
-
-
 
   function validateEmail(emailValue: string) {
     setEmail(emailValue);
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
     if (!emailValid) {
       console.log('Please enter a valid email address');
+      setSubmit(false)
       return;
     }
   }
@@ -50,8 +37,10 @@ function Form() {
     const orgValid = /^[a-zA-Zа-яА-Я0-9._-]+$/g.test(orgValue);
     if (!orgValid) {
       console.log('Please enter a valid org name');
+      setSubmit(false)
       return;
     }
+    setSubmit(true)
 
   }
 
@@ -60,8 +49,10 @@ function Form() {
     const telValid = /^\+\d+$/.test(telValue);
     if (!telValid) {
       console.log('Please enter a valid telephone');
+      setSubmit(false)
       return;
     }
+    setSubmit(true)
   }
 
   function validateLead(leadValue: string) {
@@ -70,31 +61,28 @@ function Form() {
 
     if (!leadValid) {
       console.log('Please enter a valid leader name');
+      setSubmit(false)
       return;
     }
+    setSubmit(true)
   }
 
   const validateLogotype = (logo: any) => {
-    if (!logo) {
-      alert("Файл не выбран");
-      return;
-    }
-
-    // Валидация типа файла и размера
-    if (logo.type !== "image/png" && logo.type !== "image/jpeg") {
-      alert("Выберите файл в формате PNG или JPEG");
-      return;
-    }
-
-    if (logo.size > 1024 * 1024) {
-      alert("Файл должен быть не более 1МБ");
-      return;
-    }
     setLogotype(logo);
+
+    if (!logo) {
+      console.log("File not found");
+      setSubmit(false)
+      return;
+    }
+
+    if (logo.type !== "image/png" && logo.type !== "image/jpeg") {
+      console.log("Choose a PNG or JPEG file");
+      setSubmit(false)
+      return;
+    }
+    setSubmit(true)
   };
-
-
-
 
   const handleReset = () => {
     setOrgName('');
@@ -110,10 +98,6 @@ function Form() {
     setYoutube('');
     setLeader('');
   };
-
-
-
-
 
   return (
     <form action="post" className={styles.container}>
@@ -183,8 +167,18 @@ function Form() {
         </div>
       </div>
       <div className={styles.buttons}>
-        <button type="submit" className={submit ? styles.submit : styles.no} onClick={handleSubmit} >Стать партнером проекта</button>
-        <button type='reset' className={styles.reset} onClick={handleReset}>Отменить</button>
+        <button
+          type="submit"
+          className={orgName && email && leader && submit ? styles.submit : styles.invalid}
+          onClick={handleSubmit}>
+          Стать партнером проекта
+        </button>
+        <button
+          type='reset'
+          className={styles.reset}
+          onClick={handleReset}>
+          Отменить
+        </button>
       </div>
     </form>
   )

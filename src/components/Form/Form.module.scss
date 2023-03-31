@@ -242,6 +242,17 @@
   }
 }
 
-.no{
-  background: #d90000;
+.invalid {
+  background: #fff;
+  border:1px solid #e5266e;
+  border-radius: 4px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  height: 48px;
+  text-align: center;
+  color: #e5266e;
+  pointer-events: none;
 }
