@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Form.module.scss'
 
 function Form() {
   const options = ['Экология', 'Разработка', 'Медицина', 'Политика'];
-
+  const inputRef = useRef(null);
   const [orgName, setOrgName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -16,10 +16,25 @@ function Form() {
   const [instagram, setInstagram] = useState('');
   const [youtube, setYoutube] = useState('');
   const [leader, setLeader] = useState('');
+  const [submit, setSubmit] = useState(false)
 
   const handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
+    if (submit) {
+    } else {
+
+    }
   }
+
+  useEffect(() => {
+    if (orgName && phone && email && leader) {
+      setSubmit(true)
+      return;
+    }
+  }, [orgName, phone, email, leader])
+
+
+
 
   function validateEmail(emailValue: string) {
     setEmail(emailValue);
@@ -40,6 +55,43 @@ function Form() {
 
   }
 
+  function validateTel(telValue: string) {
+    setPhone(telValue);
+    const telValid = /^\+\d+$/.test(telValue);
+    if (!telValid) {
+      console.log('Please enter a valid telephone');
+      return;
+    }
+  }
+
+  function validateLead(leadValue: string) {
+    setLeader(leadValue);
+    const leadValid = /^[a-zA-Zа-яА-Я0-9._-]+$/g.test(leadValue);
+
+    if (!leadValid) {
+      console.log('Please enter a valid leader name');
+      return;
+    }
+  }
+
+  const validateLogotype = (logo: any) => {
+    if (!logo) {
+      alert("Файл не выбран");
+      return;
+    }
+
+    // Валидация типа файла и размера
+    if (logo.type !== "image/png" && logo.type !== "image/jpeg") {
+      alert("Выберите файл в формате PNG или JPEG");
+      return;
+    }
+
+    if (logo.size > 1024 * 1024) {
+      alert("Файл должен быть не более 1МБ");
+      return;
+    }
+    setLogotype(logo);
+  };
 
 
 
@@ -64,7 +116,7 @@ function Form() {
 
 
   return (
-    <form action="" className={styles.container}>
+    <form action="post" className={styles.container}>
       <div className={styles.grid}>
         <div className={styles.items}>
           <div className={styles.item__small}>
@@ -73,7 +125,7 @@ function Form() {
           </div>
           <div className={styles.item__small}>
             <label htmlFor="" className={styles.label__requred}>Телефон</label>
-            <input type="tel" className={styles.input} />
+            <input type="tel" className={styles.input} value={phone} onChange={(e) => validateTel(e.target.value)} />
           </div>
           <div className={styles.item__small}>
             <label htmlFor="" className={styles.label__requred}>E-mail</label>
@@ -87,7 +139,7 @@ function Form() {
         </div>
         <div className={styles.logotype}>
           <label htmlFor="" className={styles.label__requred}>Логотип (jpeg,png)</label>
-          <input type="file" accept="image/png, image/jpeg" className={styles.file} />
+          <input type="file" accept="image/png, image/jpeg" className={styles.file} ref={inputRef} onChange={(e) => validateLogotype((e.target as HTMLInputElement).files?.[0])} />
           <img src="images/man.svg" alt="" className={styles.image} />
           <img src="images/close.svg" alt="" className={styles.close} />
           <div className={styles.take}>
@@ -127,11 +179,11 @@ function Form() {
         </div>
         <div className={styles.item__large}>
           <label htmlFor="" className={styles.label}>Руководитель</label>
-          <input type="text" className={styles.input} />
+          <input type="text" className={styles.input} value={leader} onChange={(e) => validateLead(e.target.value)} />
         </div>
       </div>
       <div className={styles.buttons}>
-        <button type="submit" className={styles.submit} onClick={handleSubmit}>Стать партнером проекта</button>
+        <button type="submit" className={submit ? styles.submit : styles.no} onClick={handleSubmit} >Стать партнером проекта</button>
         <button type='reset' className={styles.reset} onClick={handleReset}>Отменить</button>
       </div>
     </form>
