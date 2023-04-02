@@ -18,14 +18,15 @@
     color: #141515;
   }
 }
-
-.info {
-  padding: 5px;
-  border: none;
-  border-bottom: 5px solid #f2f8f8;
-  font-family: "PT Sans";
-  font-size: 16px;
-  color: #434848;
+.content {
+  &__info {
+    padding: 5px;
+    border: none;
+    border-bottom: 5px solid #f2f8f8;
+    font-family: "PT Sans";
+    font-size: 16px;
+    color: #434848;
+  }
 }
 
 .column {

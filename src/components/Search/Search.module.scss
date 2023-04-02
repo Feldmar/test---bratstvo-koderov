@@ -5,6 +5,13 @@
   font-family: "PT Sans";
   font-size: 16px;
   color: #434848;
+  padding: 0 8px;
+  transition: 0.4s;
+
+  &:focus {
+    transition: 0.4s;
+    border: 5px solid #a8c8c8;
+  }
 }
 
 .container {

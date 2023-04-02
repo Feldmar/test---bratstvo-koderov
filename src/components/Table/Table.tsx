@@ -1,12 +1,12 @@
 import styles from './Table.module.scss'
 
 interface IData {
-  data: any;
+  data: Array<string>;
   handlerSort: any;
-  directionSort: any;
+  directionSort: boolean;
 }
 
-function Table({ data,handlerSort, directionSort }: IData) {
+function Table({ data, handlerSort, directionSort }: IData) {
 
   return (
     <table className={styles.container}>
@@ -59,10 +59,10 @@ function Table({ data,handlerSort, directionSort }: IData) {
         </tr>
       </thead>
       <tbody className={styles.content}>
-        {data.map((post: any) => (
-          <tr key={post.id}>
-            <td className={styles.info}>{post.title}</td>
-            <td className={styles.info}>{post.body}</td>
+        {data.map((item: any) => (
+          <tr key={item.id}>
+            <td className={styles.content__info}>{item.title}</td>
+            <td className={styles.content__info}>{item.body}</td>
           </tr>
         ))}
       </tbody>
