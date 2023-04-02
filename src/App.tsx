@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import './App.scss';
 import 'sass-reset';
 import Table from './components/Table/Table';
+import Search from './components/Search/Search';
 
 function App() {
   const [data, setData] = useState([]);
+  const [directionSort, setDirectionSort] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,24 +21,33 @@ function App() {
     fetchData();
   }, []);
 
-
   const handlerSort = (field: any) => {
     const copyData = data.concat();
+    let sorting;
 
-    const sorting = copyData.sort((a: any, b: any) => {
-      const valueA = a[field]?.length || 0;
-      const valueB = b[field]?.length || 0;
-
-      return valueA - valueB;
-    });
-
-    setData(sorting);
-    console.table(sorting)
+    if (directionSort) {
+      sorting = copyData.sort((a: any, b: any) => {
+        const valueA = a[field]?.length || 0;
+        const valueB = b[field]?.length || 0;
+        return valueA - valueB;
+      });
+      setData(sorting);
+    } else {
+      sorting = copyData.sort((a: any, b: any) => {
+        const valueA = a[field]?.length || 0;
+        const valueB = b[field]?.length || 0;
+        return valueB - valueA;
+      });
+      setData(sorting);
+    }
+    console.table(directionSort)
+    setDirectionSort(!directionSort)
   }
 
   return (
-    <div>
-      <Table data={data} setData={setData} handlerSort={handlerSort} />
+    <div className='app'>
+      <Search/>
+      <Table data={data} handlerSort={handlerSort} directionSort={directionSort} />
     </div>
   );
 }

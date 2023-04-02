@@ -1,15 +1,12 @@
-import { useState } from 'react';
 import styles from './Table.module.scss'
 
 interface IData {
   data: any;
-  setData: any;
   handlerSort: any;
+  directionSort: any;
 }
 
-function Table({ data, setData, handlerSort }: IData) {
-  const [sort, setSort] = useState([])
-
+function Table({ data,handlerSort, directionSort }: IData) {
 
   return (
     <table className={styles.container}>
@@ -18,13 +15,45 @@ function Table({ data, setData, handlerSort }: IData) {
           <th className={styles.head__title}>
             <div className={styles.column__name}>
               <h5>Title</h5>
-              <img src="images/arr-bottom.svg" alt="" width={20} className={styles.array__bottom} onClick={() => handlerSort('title')} />
+              {directionSort ? (
+                <img
+                  src="images/arr-bottom.svg"
+                  alt=""
+                  width={20}
+                  className={styles.array__bottom}
+                  onClick={() => handlerSort('title')}
+                />
+              ) : (
+                <img
+                  src="images/arr-top.svg"
+                  alt=""
+                  width={20}
+                  className={styles.array__bottom}
+                  onClick={() => handlerSort('title')}
+                />
+              )}
             </div>
           </th>
           <th className={styles.head__title}>
             <div className={styles.column__name}>
               <h5>Description</h5>
-              <img src="images/arr-bottom.svg" alt="" width={20} className={styles.array__bottom} onClick={() => handlerSort('body')} />
+              {directionSort ? (
+                <img
+                  src="images/arr-bottom.svg"
+                  alt=""
+                  width={20}
+                  className={styles.array__bottom}
+                  onClick={() => handlerSort('body')}
+                />
+              ) : (
+                <img
+                  src="images/arr-top.svg"
+                  alt=""
+                  width={20}
+                  className={styles.array__bottom}
+                  onClick={() => handlerSort('body')}
+                />
+              )}
             </div>
           </th>
         </tr>
