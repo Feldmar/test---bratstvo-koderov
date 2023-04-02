@@ -19,9 +19,24 @@ function App() {
     fetchData();
   }, []);
 
+
+  const handlerSort = (field: any) => {
+    const copyData = data.concat();
+
+    const sorting = copyData.sort((a: any, b: any) => {
+      const valueA = a[field]?.length || 0;
+      const valueB = b[field]?.length || 0;
+
+      return valueA - valueB;
+    });
+
+    setData(sorting);
+    console.table(sorting)
+  }
+
   return (
     <div>
-      <Table data={data} />
+      <Table data={data} setData={setData} handlerSort={handlerSort} />
     </div>
   );
 }
