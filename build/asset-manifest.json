@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "//feldmar.github.io//practice_1/static/css/main.b8fcdd5a.css",
+    "main.js": "//feldmar.github.io//practice_1/static/js/main.59c289a7.js",
+    "static/js/787.28cb0dcd.chunk.js": "//feldmar.github.io//practice_1/static/js/787.28cb0dcd.chunk.js",
+    "static/media/PTSans-Regular.ttf": "//feldmar.github.io//practice_1/static/media/PTSans-Regular.77e92507394e2309d837.ttf",
+    "static/media/Montserrat-Bold.ttf": "//feldmar.github.io//practice_1/static/media/Montserrat-Bold.2c155811b35513d5beaa.ttf",
+    "static/media/Montserrat-Regular.ttf": "//feldmar.github.io//practice_1/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
+    "static/media/Lato-Regular.ttf": "//feldmar.github.io//practice_1/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
+    "static/media/latosemibold.woff": "//feldmar.github.io//practice_1/static/media/latosemibold.c50637e1089d3058b347.woff",
+    "static/media/insta.svg": "//feldmar.github.io//practice_1/static/media/insta.d990703d4dacdc181ceb.svg",
+    "static/media/homepage.svg": "//feldmar.github.io//practice_1/static/media/homepage.f08f2b4ab368dd0d9bf4.svg",
+    "static/media/vk.svg": "//feldmar.github.io//practice_1/static/media/vk.4f716e82afad73f35fc2.svg",
+    "static/media/ok.svg": "//feldmar.github.io//practice_1/static/media/ok.a173b67543625bbc4d55.svg",
+    "static/media/facebook.svg": "//feldmar.github.io//practice_1/static/media/facebook.50b5f6bd910ae1e56f78.svg",
+    "static/media/youtube.svg": "//feldmar.github.io//practice_1/static/media/youtube.fd129da29cd0e8ca22ec.svg",
+    "index.html": "//feldmar.github.io//practice_1/index.html",
+    "static/media/arr.svg": "//feldmar.github.io//practice_1/static/media/arr.0a3af054784b40e4ff6f.svg",
+    "main.b8fcdd5a.css.map": "//feldmar.github.io//practice_1/static/css/main.b8fcdd5a.css.map",
+    "main.59c289a7.js.map": "//feldmar.github.io//practice_1/static/js/main.59c289a7.js.map",
+    "787.28cb0dcd.chunk.js.map": "//feldmar.github.io//practice_1/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8fcdd5a.css",
+    "static/js/main.59c289a7.js"
+  ]
+}
