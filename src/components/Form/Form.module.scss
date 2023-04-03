@@ -244,7 +244,7 @@
 
 .invalid {
   background: #fff;
-  border:1px solid #e5266e;
+  border: 1px solid #e5266e;
   border-radius: 4px;
   font-family: "Lato";
   font-style: normal;
@@ -255,4 +255,25 @@
   text-align: center;
   color: #e5266e;
   pointer-events: none;
+}
+
+.message {
+  position: fixed;
+  padding: 10px 30px;
+  top: 40px;
+  left: 50%;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  background-color: #1314128d;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  min-width: 300px;
+  text-align: center;
 }
